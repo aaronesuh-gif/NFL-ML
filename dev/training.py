@@ -69,4 +69,61 @@ def select_features(data):
         'schedule_week',                 
     ]
 
+    for i, col in enumerate(feature_columns):
+        print(f"{i}: {col}")
+
+    clean_data = data.dropna(subset = feature_columns)
+
+    x = clean_data[feature_columns]
+    y = clean_data['home_wins']
+
+    dates = clean_data['schedule_date']
+
+    return x, y, dates, clean_data
+
+#split data into training and testing sets
+def split_data(x,y,dates):
+
+    'splitting by time, training on older games testing on newer games'
+
+    print('splitting data')
+
+    split_date = dates.quantile(0.8) #splitting at 80%, 80 for test
+
+    print(f'training on games before: {split_date.date()}')
+    print(f'testing on games after: {split_date.date()}')
+
+    #create train and test sets
+    training = dates < split_date
+    testing = dates >= split_date
+
+    x_training = x[training]
+    x_testing = x[testing]
+    y_training = y[training]
+    y_testing = y[testing]
+
+
+    print(f'training set size: {len(x_training)}')  #number of training set size 
+    print(f'testing set size: {len(x_testing)}') #number of testing set size
+
+    return x_training, x_testing, y_training, y_testing
+
+#training model
+def train_model(x_training, y_training):
+
+#training xgboost model
+    print('training model')
     
+    model = XGBClassifier(
+        n_estimators=125, # number of trees can change if too slow or bad
+        learning_rate=0.1, #model learning rate
+        max_depth=6, #depth of tree
+        random_state=42, #reproducibility
+        n_jobs=-1 #use cpu cores
+    )
+
+    model.fit(x_training, y_training)
+
+    print ('model trained')
+
+    return model
