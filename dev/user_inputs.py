@@ -37,5 +37,25 @@ def get_user_input():
     if away_team.lower() == 'quit':
         return None
     
-    #get betting info
+ 
+ 
+ #get betting info
+ #find on any sites/apps ie. espn, fanduel, etc.
     
+    spread = input('spread (negative = home favored):')
+    spread = spread.strip()
+    if spread.lower() == 'quit':
+        return None
+    spread = float(spread)
+
+    over_under = input('over/under line (total points): ')
+    over_under = over_under.strip()
+    if over_under.lower() == 'quit':
+        return None
+    over_under = float(over_under)
+
+    week = input('week number (1-18): ')
+    week = week.strip()
+    if week.lower() == 'quit':
+        return None
+    week = int(week)
