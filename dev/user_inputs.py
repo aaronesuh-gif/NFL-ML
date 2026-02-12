@@ -1,6 +1,6 @@
 import pickle
 import numpy as np
-#from bettingcalc import ... whatever i name the betting calculator methods
+from simple_calculator import get_betting_recommendation
 
 def load_model():
     'load trained model'
