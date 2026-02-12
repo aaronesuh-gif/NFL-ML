@@ -202,7 +202,7 @@ def evaluate_model(model, x_training , y_training, x_testing, y_testing):
 
 #save model to file
 
-def save_model(model, filepath = '../dev/model/nfl_model.pkl'):
+def save_model(model, filepath = 'model/nfl_model.pkl'):
    
    #saving model to file so dont have to train each time
     print(f'saving model to {filepath}')
