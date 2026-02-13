@@ -6,6 +6,7 @@ import numpy as np #math helper
 from xgboost import XGBClassifier #model I use(?)
 from sklearn.ensemble import RandomForestClassifier #model I use(?)
 from sklearn.linear_model import LogisticRegression #control group basic model
+from rolling_stats import add_rolling_stats, select_features_with_rolling_stats #adds rolling stats
 
 #training
 from sklearn.model_selection import train_test_split #splits data 
@@ -66,7 +67,7 @@ def preparing_data(df):
 
 
 #choose columns model will use
-def select_features(data):
+#def select_features(data):
     feature_columns = [
         'spread_favorite',
         'over_under_line',
@@ -234,9 +235,10 @@ def main():
 
     # prepare data
     data = preparing_data(df)
+    data = add_rolling_stats(data)
 
     #select features and target
-    x, y, dates, clean_data = select_features(data)
+    x, y, dates, clean_data = select_features_with_rolling_stats(data)
 
     #split data into training and testing sets
     x_training, x_testing, y_training, y_testing = split_data(x,y,dates)
