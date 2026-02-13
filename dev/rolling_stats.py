@@ -132,7 +132,7 @@ def select_features_with_rolling_stats(data):
         'over_under_line',
         'schedule_week',
         
-        # NEW: Rolling stats (BIG IMPROVEMENT!)
+        # rolling stats
         'home_wins_last3',
         'away_wins_last3',
         'win_pct_diff',

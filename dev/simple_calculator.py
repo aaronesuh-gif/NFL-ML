@@ -75,7 +75,7 @@ def get_betting_recommendation(your_probability,vegas_odds,bankroll= 1000):
 
     if ev < 1.0:
         reason = 'ev too low'
-    elif your_probability < 0.55:
+    elif your_probability < 0.51:
         reason = 'confidence too low'
     elif units == 0:
         reason = 'no edge'
