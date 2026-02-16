@@ -31,7 +31,7 @@ def calculate_ev(your_probability,vegas_odds):
 
     profit_if_win = decimal_odds - 1
 
-    ev = (your_probability + profit_if_win) - ((1 - your_probability) * 1)
+    ev = (your_probability * profit_if_win) - ((1 - your_probability) * 1)
 
     #ev percentage
     return ev * 100
