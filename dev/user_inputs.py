@@ -20,7 +20,7 @@ def get_input():
     print("="*70)
     
     # basic info
-    home = input('\nHome team: ')
+    home = input('Home team: ')
     away = input('Away team: ')
     spread = float(input('Spread (e.g., -3): '))
     over_under = float(input('Over/Under: '))
